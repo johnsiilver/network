@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+// RawIn is the raw input to send over an input channel.  It does not
+// automatically add carriage returns or anything else.  It is a pure raw
+// channel, handle accordingly.
+message RawIn {
+  // The device to stream to.  This must always be included on all requests in
+  // and if it doesn't match the original name the stream will break.
+  string device = 1;
+
+  // User is the user to authenticate as.
+  string user = 2;
+
+  // The raw input to send the router.  Remember, this is raw input.
+  string input = 3;
+
+  // Close indicates to close the raw session.  Raw sessions are never reused
+  // and a raw session also blocks any CmdReq that are WRITE.
+  bool close = 4;
+};
+
+// RawOut is the raw output that the router sends.  Be careful, as if you want
+// a device to send output that can be paged, you need to either suspend paging
+// or be prepared to respond via RawIn.
+message RawOut {
+  // The raw output from the device on stdout.
+  string stdout = 1;
+
+  // The raw output from the device on stderr.
+  string stderr = 2;
+};
+
+// CmdReq is used to send a single command over a session.
+message CmdReq {
+  enum CmdType {
+    UNKNOWN = 0;
+    // Indicates that the request is for a read-only command. Many read-only
+    // commands can occur at one time.
+    READ = 1;
+
+    // Write indicates that the request will write to the device. Only one
+    // write command or raw session can be done at a time.
+    WRITE = 2;
+  };
+  // The device to connect to (not the IP address).
+  string device = 1;
+
+  // User is the user to authenticate as.
+  string user = 2;
+
+  // The command to send the device.
+  string cmd = 3;
+
+  // The type of command it is.  There can only be one WRITE Cmd at a time.
+  // A RawIn request holds the WRITE session until it is closed.
+  CmdType cmd_type = 4;
+};
+
+// CmdResp is the output from the device from a CmdReq.
+message CmdResp {
+  // The output from the command issued.
+  string output = 1;
+};
+
+// PutReq puts a file on the device at location path.
+message PutReq {
+  // The device to put the file on.
+  string device = 1;
+  // User is the user to authenticate as.
+  string user = 2;
+  // The file to put on the device.
+  bytes file = 3;
+  // The path to put the file at, including the file name.
+  string path = 4;
+};
+
+// Reserved for future use.
+message PutResp {};
+
+// Requests a file on the device at path.
+message GetReq {
+  // The device to get the file from.
+  string device = 1;
+  // User is the user to authenticate as.
+  string user = 2;
+  // The path to the file to retrieve.
+  string path = 3;
+};
+
+// The file at path from GetReq.
+message GetResp {
+  // The contents of the file that was retrieved.
+  bytes file = 1;
+}
+
+// Provides methods for using sessions on a device.
+service AgentService {
+  // RawSession opens a raw session to the device. You receive input as the device
+  // displays it
+  rpc RawSession(stream RawIn) returns (stream RawOut);
+
+  // Run allows you to issue commands over a single session and get responses
+  // to each command.  If you need interactivity (such as may be needed because
+  // of interactive menus), use RawSession().
+  rpc Run(stream CmdReq) returns (stream CmdResp);
+
+  // Put puts a file onto a device.
+  rpc Put(PutReq) returns (PutResp);
+
+  // Get gets a file from the device.
+  rpc Get(GetReq) returns (GetResp);
+};

@@ -1,0 +1,11 @@
+{
+	"Devices": [
+		{
+			"Name": "passDevice",
+			"Address": "127.0.0.1",
+			"Port": 1865,
+			"Transport": 1,
+			"Transfer": 1
+		}
+	]
+}
