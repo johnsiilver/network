@@ -49,7 +49,20 @@
 
 <p>All tooling in the Network toolkit is built in the Go language.  Go is fast, scalable and easy to deploy (no need to install an interpreter).  This makes installing toolkit components much easier.  If your not familiar with Go, more information can be found at: <a href="http://www.golang.org">http://www.golang.org</a> . </p>
 
-<p>There is a very small but growing number of network automation tooling frameworks written in scripting languages such as Python that plugin to larger frameworks such as Ansible (also in Python).  All services are exposed via Google's GRPC library, allowing all major languages access to the infrastructure.  We currently only provide client wrappers in Go, but will extend them to other libraries in the future.  </p>
+<p>There is a very small but growing number of network automation tooling frameworks written in scripting languages such as Python that plugin to larger frameworks such as Ansible (also in Python).  All services are exposed via Google's GRPC library, allowing all major languages access to the infrastructure.  We currently only provide client wrappers in Go, but will extend them to other libraries in the future.</p>
+
+<h3>
+<a id="licensing" class="anchor" href="#licensing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Licensing</h3>
+
+<p>Everything here is licensed via the Apache 2.0 license.  This project utilizes other open source software whose licenses may vary.  While we try to maintain compatible licenses, we make no guarantees and it is the user's responsibility to check on any licensing requirements they may have.</p>
+
+<h4>
+<a id="here-is-a-current-list-of-third-party-libraries-and-their-licenses" class="anchor" href="#here-is-a-current-list-of-third-party-libraries-and-their-licenses" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Here is a current list of third-party libraries and their licenses:</h4>
+
+<p>golang libraries(ssh, context, ...) - BSD license(<a href="https://golang.org/LICENSE">https://golang.org/LICENSE</a>)
+grpc libraries - BSD license(<a href="https://github.com/grpc/grpc/blob/master/LICENSE">https://github.com/grpc/grpc/blob/master/LICENSE</a>)
+glog - Apache 2.0(<a href="https://github.com/golang/glog/blob/master/LICENSE">https://github.com/golang/glog/blob/master/LICENSE</a>)
+pflag - BSD license(<a href="https://github.com/spf13/pflag/blob/master/LICENSE">https://github.com/spf13/pflag/blob/master/LICENSE</a>)</p>
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
