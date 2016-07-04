@@ -1,55 +1,56 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <meta name="description" content="Network Toolbox : Tools for Network Automation">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Network Toolbox by johnsiilver</title>
+    <title>Network Toolbox</title>
   </head>
 
   <body>
-    <header>
-      <div class="inner">
-        <h1>Network Toolbox</h1>
-        <h2>Tools for Network Automation</h2>
-        <a href="https://github.com/johnsiilver/network" class="button"><small>View project on</small> GitHub</a>
-      </div>
-    </header>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <p><img src="http://cdn-0.freeclipartnow.com/d/10188-1/toolkit.jpg"></p>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/johnsiilver/network">View on GitHub</a>
 
-<h3>
+          <h1 id="project_title">Network Toolbox</h1>
+          <h2 id="project_tagline">Tools for Network Automation</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/johnsiilver/network/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/johnsiilver/network/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
 <a id="welcome-to-the-network-toolkit" class="anchor" href="#welcome-to-the-network-toolkit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to the Network Toolkit.</h3>
 
 <p>The Network Toolkit provides various resources for automating network services used in enterprise, internet providers, and within the cloud space.</p>
 
 <h3>
-<a id="valet" class="anchor" href="#valet" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Valet</h3>
+<a id="valet---network-communication-service" class="anchor" href="#valet---network-communication-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Valet - Network Communication Service</h3>
 
 <p>Valet, our first tool in the stack, simply abstracts communicating with network devices into a service with a simple API.</p>
 
 <p>This abstraction is powerful, allowing a central location of access control to all automations.  Throw away your individual scripts that all implement slightly different methods for sending command, configurations, or files to your network device.  </p>
 
-<p>Built for scale, this service scales to thousands of nodes and is perfect for your kubernetes/docker installation.  And security doesn't take a backseat.  Certificate support built in for service access and user/pass or SSH keys for device access (user/pass, can you believe still a necessary evil in 2016).</p>
+<p>Built for scale, this service scales to thousands of nodes and is perfect for your kubernetes/docker installation.  And security doesn't take a backseat.  With built in certificate support for service access and user/pass or SSH keys for device access, we have you secured for modern and legacy devices.</p>
 
 <h3>
 <a id="built-on-go" class="anchor" href="#built-on-go" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Built on Go</h3>
 
-<p>All tooling in the Network toolkit is built in the Go language.  Go is fast, scalable and easy to deploy (no need to install an interpreter).  This makes installing toolkit components much easier.  If your not familiar with Go, more information can be found at: <a href="http://www.golang.org">http://www.golang.org</a> . </p>
+<p>The Network toolkit is built in the Go language, a modern, fast, scalable language.  Developed for the needs of infrastructure programming at Google scale, it allows easy to deployment via binaries (no need to install an interpreter on target systems).  If your not familiar with Go, more information can be found at: <a href="http://www.golang.org">http://www.golang.org</a> . </p>
 
-<p>There is a very small but growing number of network automation tooling frameworks written in scripting languages such as Python that plugin to larger frameworks such as Ansible (also in Python).  All services are exposed via Google's GRPC library, allowing all major languages access to the infrastructure.  We currently only provide client wrappers in Go, but will extend them to other libraries in the future.</p>
+<p>There is a very small but growing number of network automation tooling frameworks written in scripting languages such as Python that plugin to larger frameworks such as Ansible.  Network Toolkit services are exposed via Google's GRPC library, allowing all major languages access to the infrastructure. </p>
 
 <h3>
 <a id="licensing" class="anchor" href="#licensing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Licensing</h3>
@@ -59,34 +60,29 @@
 <h4>
 <a id="here-is-a-current-list-of-third-party-libraries-and-their-licenses" class="anchor" href="#here-is-a-current-list-of-third-party-libraries-and-their-licenses" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Here is a current list of third-party libraries and their licenses:</h4>
 
-<p>golang libraries(ssh, context, ...) - BSD license(<a href="https://golang.org/LICENSE">https://golang.org/LICENSE</a>)
-grpc libraries - BSD license(<a href="https://github.com/grpc/grpc/blob/master/LICENSE">https://github.com/grpc/grpc/blob/master/LICENSE</a>)
-glog - Apache 2.0(<a href="https://github.com/golang/glog/blob/master/LICENSE">https://github.com/golang/glog/blob/master/LICENSE</a>)
-pflag - BSD license(<a href="https://github.com/spf13/pflag/blob/master/LICENSE">https://github.com/spf13/pflag/blob/master/LICENSE</a>)</p>
+<ul>
+<li>golang libraries(ssh, context, ...) - BSD license(<a href="https://golang.org/LICENSE">https://golang.org/LICENSE</a>)</li>
+<li>grpc libraries - BSD license(<a href="https://github.com/grpc/grpc/blob/master/LICENSE">https://github.com/grpc/grpc/blob/master/LICENSE</a>)</li>
+<li>glog - Apache 2.0(<a href="https://github.com/golang/glog/blob/master/LICENSE">https://github.com/golang/glog/blob/master/LICENSE</a>)</li>
+<li>pflag - BSD license(<a href="https://github.com/spf13/pflag/blob/master/LICENSE">https://github.com/spf13/pflag/blob/master/LICENSE</a>)</li>
+</ul>
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
 <p>Author - John Doak (<a href="https://github.com/johnsiilver" class="user-mention">@johnsiilver</a>)</p>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/johnsiilver/network/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/johnsiilver/network/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/johnsiilver/network"></a> is maintained by <a href="https://github.com/johnsiilver">johnsiilver</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+      </section>
     </div>
 
-  
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Network Toolbox maintained by <a href="https://github.com/johnsiilver">johnsiilver</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
   </body>
 </html>
